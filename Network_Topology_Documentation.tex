@@ -1,0 +1,587 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{setspace}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{pgfgantt}
+\usepackage{rotating}
+\usepackage{adjustbox}
+\usepackage{pdflscape}
+\usepackage{breakurl}
+
+
+\geometry{left=1in, right=1in, top=1in, bottom=1in}
+\setstretch{1.5}
+
+\title{Strategic Planning of Computer Networks in the New Engineering Building of the Francisco Jose de Caldas Distrital University}
+
+\author{Carlos Stiven Mora Hoyos \\ (Cód. 20192020113)}
+\date{2024}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \textbf{\LARGE Strategic Planning of Computer Networks in the New Engineering Building of the Francisco Jose de Caldas Distrital University} \\[1.5cm]
+    \includegraphics[width=0.3\textwidth]{UD.png} \\[0.5cm]
+    \textbf{\large Carlos Stiven Mora Hoyos \\ (Cód. 20192020113)} \\[1.5cm]
+\begin{center}
+    \vspace*{\fill}
+    \vspace*{\fill}
+    \vspace*{\fill}
+    \vspace*{\fill}
+    \vspace*{\fill}
+    \large{UNIVERSIDAD DISTRITAL FRANCISCO JOSÉ DE CALDAS\\ INGENIERÍA EN SISTEMAS\\ BOGOTA, D.C\\ 2024}
+\end{center}
+    \vspace*{\fill}
+\end{titlepage}
+
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+As part of the expansion and modernization of the Universidad Distrital Francisco José de Caldas, a new building is being developed for the Faculty of Engineering at the Chapinero campus. This project, located on the lot of the former Alejandro Suárez Copete building and covering 12,856 square meters, is designed to house an advanced network infrastructure to support the academic, research, and administrative needs of approximately 8,000 students.
+
+The building's network topology design will include the implementation of a robust network with multiple subnets and VLANs, adapted to various spaces such as specialized laboratories, software rooms, and common areas. Category 6A cabling will be used to ensure high-speed connectivity and the spaces will be equipped with state-of-the-art switches and routers to efficiently manage data traffic. This infrastructure will enable the school to expand its academic offerings with innovative programs and respond effectively to the technological demands of modern education.
+
+\section{Initial Information}
+
+\begin{itemize}
+    \item 23 specialized laboratories
+    \item 11 specialized software rooms
+    \item 3 doctoral rooms
+    \item 2 doctoral laboratories
+    \item Study and consultation room, multipurpose room, astronomical observatory, wellness areas, relaxation and socializing room, walkable terrace, and parking lots.
+\end{itemize}
+
+This project will benefit close to 8,400 students, who will be able to enjoy a building of more than 12,000 square meters. 
+
+\section{General Specifications}
+
+\begin{itemize}
+    \item \textbf{High bandwidth and low latency:} These rooms require robust network connections to handle specialized software that can be data intensive.
+    \item \textbf{Security and network isolation:} They may need isolated or segmented networks to protect sensitive data and critical operations.
+    \item \textbf{Network Segmentation:} Use of VLANs to separate network traffic from labs, classrooms, and administrative areas, improving security and efficiency.
+    \item \textbf{Security Policies:} Implementation of advanced firewalls, intrusion detection, and prevention systems to protect the network from external and internal threats.
+\end{itemize}
+
+\section{IP Distribution}
+
+Before assigning IPs, it is critical to understand the different types of devices and services that will require connectivity in the building. This includes computers, printers, servers, security cameras, Wi-Fi access points, and building control systems, among others.
+
+\subsection{Subnet Planning}
+
+In the development of a network infrastructure for complex academic environments, segmentation using subnetworks is essential. This strategy improves traffic management, security, and administration. Assigning a specific subnet to each functional area - such as laboratories, classrooms, and administrative offices - allows for more effective control and configuration tailored to the specific needs of each segment, optimizing performance and strengthening security by reducing unwanted traffic and limiting access between subnets.
+
+\begin{itemize}
+    \item Subnet for Laboratories
+    \item Classroom Subnetwork
+    \item Subnet for Administration
+    \item Subnet for Security Services (cameras, access control)
+    \item Guest Wi-Fi Subnet
+\end{itemize}
+
+Each subnet would have its own IP address range, which could be planned as follows, assuming the network address is 10.0.0.0.0/16:
+
+\begin{itemize}
+    \item 10.0.1.0/24 - Laboratories
+    \item 10.0.2.0/24 - Classrooms
+    \item 10.0.3.0/24 - Administration
+    \item 10.0.4.0/24 - Security Services
+    \item 10.0.5.0/24 - Guest Wi-Fi
+\end{itemize}
+
+Use DHCP (Dynamic Host Configuration Protocol) to automatically assign IP addresses to user devices such as laptops, phones, and tablets. This simplifies the management of devices that frequently connect and disconnect from the network.
+
+\subsection{Implementación de VLANs}
+
+VLANs (Virtual Local Area Networks) can be used to further segment the network, isolating specific traffic and improving security. Each VLAN can match a subnet, ensuring that traffic is limited and efficiently managed:
+
+\begin{itemize}
+    \item VLAN 10 for Labs
+    \item VLAN 20 for Classrooms
+    \item VLAN 30 for Administration
+    \item VLAN 40 for Security Services
+    \item VLAN 50 for Guest Wi-Fi
+\end{itemize}
+
+\subsection{Cable Type}
+
+For a building with such advanced features and intensive data needs, it is recommended to use Category 6A (Cat 6A) cabling. This type of cable supports frequencies up to 500 MHz and is suitable for 10-Gigabit Ethernet networks up to 100 meters. It is also more resistant to external interference compared to previous versions.
+
+\subsection{Cable Quantity Calculation}
+
+\textbf{Building Dimensions and Spaces:}
+
+\begin{itemize}
+    \item Total Area: 12,000 square meters.
+    \item Number of Floors: 15.
+    \item Key Spaces: 23 laboratories, 11 specialized software rooms, among others.
+\end{itemize}
+
+\textbf{Approximate Calculation:}
+
+\begin{itemize}
+    \item Per Floor: For a uniform distribution, we can assume that each floor has an approximate area of 12,000/15=800 square meters.
+    \item Cable length per floor: Estimating that each network point could be at least 30 meters from the telecom room (round trip, plus some slack for installation), and considering two network points for each room/laboratory:
+        \begin{itemize}
+            \item If each floor has approximately 15 rooms (adding laboratories, classrooms, and other rooms mentioned), and each room has 2 network points, we will need (15*2*30) = 900 meters of cable per floor.
+        \end{itemize}
+    \item Additional Length for Special Features:
+        \begin{itemize}
+            \item Software rooms and laboratories on the upper floors may require more network points or longer distances depending on the physical layout and specific requirements, but to maintain a conservative estimate, we assume an average, which means that they will not be taken into account for the present calculation.
+        \end{itemize}
+    \item Total Cable for the Building:
+        \begin{itemize}
+            \item For all floors, this would be (900*15) = 13,500 meters.
+            \item Adding an additional 20\% for waste, errors, and adjustments, the total would be: 
+        \end{itemize}
+\end{itemize}
+
+\begin{align*}
+    \text{Total meters with adjustment} &= (\text{meters per floor} \times \text{number of floors}) \times (1 + \text{percentage of adjustment}) \\
+    \text{Total meters with adjustment} &= (900 \times 15) \times 1.2 \\
+    \text{Total meters with adjustment} &= 16,200
+\end{align*}
+
+\textbf{Cable Cost Calculation} \cite{truecable}:
+
+\begin{itemize}
+    \item Cable price = 297 dollars / 305 meters
+\end{itemize}
+
+The price per meter of cable is approximately \$0.88. Therefore, the total estimated cost for the 16,200 meters of cable needed for the building would be about \$14,182.
+
+\subsection{Needs by Specific Areas}
+
+\begin{itemize}
+    \item \textbf{Specialized Laboratories and Specialized Software Rooms:} Each of these 23 laboratories and 11 rooms will require multiple high-speed network points capable of handling specialized software and advanced laboratory equipment. A robust network infrastructure capable of handling large volumes of data and fast responses (low latency) should be considered.
+    \item \textbf{Ph.D. Rooms and Laboratories:} These spaces, dedicated to high-level research, will need secure, high-capacity connections, probably with additional requirements for data privacy and security.
+    \item \textbf{Study and Consultation Room, Multiple Classroom, and Wellness Areas:} These general spaces will need extensive and efficient WiFi coverage, with multiple access points to ensure connectivity in all areas.
+    \item \textbf{Astronomical Observatory:} This unique space will need specialized network connections to support astronomical equipment and real-time data transmission.
+    \item \textbf{Walkable Terrace and Socializing Areas:} Consider outdoor WiFi access points to ensure full connectivity in open areas.
+    \item \textbf{Parking and Bike Racks:} Implementation of intelligent security and monitoring systems requiring network connectivity.
+\end{itemize}
+
+\section{Network Equipment}
+
+\subsection{Network Switches}
+
+\textbf{Required Features:}
+
+\begin{itemize}
+    \item Ability to handle high-speed traffic and multiple connections.
+    \item Gigabit Ethernet ports to support 1 Gbps connections.
+    \item Support for Power over Ethernet (PoE) to power devices such as security cameras and Wi-Fi access points directly through the network cable.
+    \item Management functionalities to configure, monitor, and secure the network.
+\end{itemize}
+
+\textbf{Model of Choice:}
+
+\begin{itemize}
+    \item Unmanaged 48-port Gigabit PoE switch with 48 IEEE802.3af/at PoE+@400W ports, 2 x 1G SFP, 50-port Power over Ethernet NICGIGA switch, Layer 2 and 3 functionalities, and advanced network management. It is ideal for enterprise and educational environments.
+\end{itemize}
+
+Cost: \$300 \cite{amazon1}
+
+\subsection{Routers}
+
+\textbf{Required Features:}
+
+\begin{itemize}
+    \item Support for multiple WAN connections to ensure redundancy and high availability.
+    \item Integrated advanced security, such as VPN, firewall, and threat protection.
+    \item Ability to handle high Internet connection speeds and efficiently distribute traffic across the internal network.
+\end{itemize}
+
+\textbf{Model of Choice:}
+
+\begin{itemize}
+    \item SM-X-64A 64 channel Async serial interface for ISR4000 series router: This router is designed for enterprises and can handle integrated network services, such as voice, video, security, and data, with excellent scalability.
+\end{itemize}
+
+Price: \$11,237.41 \cite{itprice}
+
+\subsection{Wi-Fi Access Points}
+
+\textbf{Required Features:}
+
+\begin{itemize}
+    \item Support for the latest Wi-Fi standards, such as Wi-Fi 6 (802.11ax).
+    \item Ability to handle multiple devices simultaneously.
+    \item Robust security, including WPA3 and network segmentation features.
+\end{itemize}
+
+\textbf{Model of Choice:}
+
+\begin{itemize}
+    \item Aruba Networks AP 515: This access point supports Wi-Fi 6, is ideal for environments with high device density, and offers advanced security features and intelligent network management.
+\end{itemize}
+
+Price: \$350 \cite{amazon2}
+
+\subsection{Patch Panels and Network Cabinets}
+
+\textbf{Required Features:}
+
+\begin{itemize}
+    \item High-density patch panels for easy organization and connection of cabling.
+    \item Robust and secure network cabinets to protect equipment and facilitate maintenance.
+\end{itemize}
+
+\textbf{Example in the Market:}
+
+\begin{itemize}
+    \item Panduit Mini-Com Modular Patch Panels: Offer a high-density, easy-to-manage solution for connecting and organizing cables in the rack.
+    \item Tripp Lite SR42UB: It is a standard 42U cabinet that provides robustness and security to house network equipment and servers.
+\end{itemize}
+
+Price: \$2285.86 \cite{mym}
+
+\section{Cost Analysis}
+
+\subsection{Physical Table Cost}
+
+% \begin{table}[h!]
+% \centering
+% \begin{tabular}{|l|c|c|c|}
+% \hline
+% \textbf{Item} & \textbf{Quantity} & \textbf{Price per Unit (USD)} & \textbf{Total Cost (USD)} \\
+% \hline
+% Cat 6A Ethernet Cable (16,200 meters) & 16,200 m & 0.88 & 14,182 \\
+% 48-port Gigabit PoE Switch & 1 & 300 & 300 \\
+% Cisco ISR 4000 Series Router & 1 & 11,237.41 & 11,237.41 \\
+% Aruba Networks AP 515 & 1 & 350 & 350 \\
+% Panduit Mini-Com Modular Patch Panels & 1 & 100 & 100 \\
+% Tripp Lite SR42UB 42U Cabinet & 1 & 2,285.86 & 2,285.86 \\
+% \hline
+% \end{tabular}
+% \caption{Cost Analysis of Network Equipment}
+% \label{tab:cost}
+% \end{table}
+
+\begin{table}[h!]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Item} & \textbf{Quantity} & \textbf{Price per Unit (USD)} & \textbf{Total Cost (USD)} \\
+\hline
+Cat 6A Ethernet Cable (16,200 meters) & 16,200 m & 0.88 & 14,182 \\
+48-port Gigabit PoE Switch & 1 & 300 & 300 \\
+Cisco ISR 4000 Series Router & 1 & 11,237.41 & 11,237.41 \\
+Aruba Networks AP 515 & 1 & 350 & 350 \\
+Panduit Mini-Com Modular Patch Panels & 1 & 100 & 100 \\
+Tripp Lite SR42UB 42U Cabinet & 1 & 2,285.86 & 2,285.86 \\
+\hline
+\end{tabular}
+}
+\caption{Cost Analysis of Network Equipment}
+\label{tab:cost}
+\end{table}
+
+\subsection{Operational Costs and Personnel Requirements}
+
+To install and configure the network system for the new building, an interdisciplinary team of experts is required. The project will last for three months (12 weeks), and the operational costs have been carefully adjusted to fit a budget of approximately \$50,000. Below is a breakdown of the required personnel and their responsibilities:
+
+\begin{itemize}
+    \item \textbf{Project Manager:} 1 person - Responsible for planning, coordinating, and supervising the project from start to finish.
+    \item \textbf{Network Engineers:} 2 people - Responsible for network design, switch and router configuration, VLAN implementation, and subnetting.
+    \item \textbf{Structured Cabling Technicians:} 3 people - Responsible for the physical installation of Cat 6A network cabling.
+    \item \textbf{Network Security Specialists:} 1 person - Responsible for implementing firewalls, intrusion detection, and prevention systems (IDS/IPS).
+    \item \textbf{Wi-Fi Configuration Specialists:} 1 person - Responsible for installing and configuring Wi-Fi access points.
+    \item \textbf{Equipment Installation Technicians:} 2 people - Responsible for installing patch panels, switches, and routers in network cabinets.
+    \item \textbf{Technical Support and Testing:} 1 person - Responsible for connectivity testing, troubleshooting, and ensuring the entire system functions correctly.
+\end{itemize}
+
+\subsection{Cost Breakdown}
+
+
+% \begin{table}[h!]
+% \centering
+% \begin{tabular}{|l|c|c|c|c|}
+% \hline
+% \textbf{Type of Specialist} & \textbf{Quantity} & \textbf{Hourly Rate (USD)} & \textbf{Total Hours per Person} & \textbf{Total Cost (USD)} \\
+% \hline
+% Project Manager & 1 & 60 & 110 & 6,600 \\ \hline
+% Network Engineers & 2 & 50 & 110 & 11,000 \\ \hline
+% Structured Cabling Technicians & 3 & 30 & 110 & 9,900 \\ \hline
+% Network Security Specialists & 1 & 55 & 110 & 6,050 \\ \hline
+% Wi-Fi Configuration Specialists & 1 & 45 & 110 & 4,950 \\ \hline
+% Equipment Installation Technicians & 2 & 35 & 110 & 7,700 \\ \hline
+% Technical Support and Testing & 1 & 40 & 110 & 4,400 \\ \hline
+% \end{tabular}
+% \caption{Operational Cost Breakdown}
+% \label{tab:costbreakdown}
+% \end{table}
+
+
+\begin{table}[h!]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Type of Specialist} & \textbf{Quantity} & \textbf{Hourly Rate (USD)} & \textbf{Total Hours per Person} & \textbf{Total Cost (USD)} \\
+\hline
+Project Manager & 1 & 60 & 110 & 6,600 \\
+Network Engineers & 2 & 50 & 110 & 11,000 \\
+Structured Cabling Technicians & 3 & 30 & 110 & 9,900 \\
+Network Security Specialists & 1 & 55 & 110 & 6,050 \\
+Wi-Fi Configuration Specialists & 1 & 45 & 110 & 4,950 \\
+Equipment Installation Technicians & 2 & 35 & 110 & 7,700 \\
+Technical Support and Testing & 1 & 40 & 110 & 4,400 \\
+\hline
+\end{tabular}
+}
+\caption{Operational Cost Breakdown}
+\label{tab:costbreakdown}
+\end{table}
+
+
+% \begin{table}[h!]
+% \centering
+% \begin{tabular}{|l|c|c|c|c|}
+% \hline
+% \textbf{Type of Specialist} & \textbf{Quantity} & \textbf{Hourly Rate (USD)} & \textbf{Total Hours per Person} & \textbf{Total Cost (USD)} \\
+% \hline
+% Project Manager & 1 & 60 & 110 & 6,600 \\
+% Network Engineers & 2 & 50 & 110 & 11,000 \\
+% Structured Cabling Technicians & 3 & 30 & 110 & 9,900 \\
+% Network Security Specialists & 1 & 55 & 110 & 6,050 \\
+% Wi-Fi Configuration Specialists & 1 & 45 & 110 & 4,950 \\
+% Equipment Installation Technicians & 2 & 35 & 110 & 7,700 \\
+% Technical Support and Testing & 1 & 40 & 110 & 4,400 \\
+% \hline
+% \end{tabular}
+% \caption{Operational Cost Breakdown}
+% \label{tab:costbreakdown}
+% \end{table}
+
+
+
+\subsection{Summary of Total Costs}
+
+\begin{itemize}
+    \item Total Equipment and Material Costs: \$28,455.27
+    \item Total Labor Costs: \$50,600
+    \item Grand Total for the Project: \$79,055.27
+\end{itemize}
+
+\section{Network Topology and Configurations Overview}
+
+\subsection{Network Topology in Packet Tracer}
+
+In the new engineering building at the Universidad Distrital Francisco José de Caldas, a network has been designed to support the academic, research, and administrative needs of approximately 8,000 students. The devices used in Cisco Packet Tracer simulate the real devices, though certain limitations and complications inherent to the simulation environment may be encountered.
+
+\subsection{Main Components}
+
+\begin{itemize}
+    \item \textbf{Cisco 2901 Router}: Configured for inter-VLAN routing and providing DHCP services.
+    \item \textbf{Cisco 2950T-24 Switch}: Configured with VLANs to segment traffic and a trunk port to the router.
+    \item \textbf{Access Points}: Provide wireless connectivity for Wi-Fi users.
+\end{itemize}
+
+\subsection{Configured VLANs}
+
+\begin{itemize}
+    \item \textbf{VLAN 10 - Labs}: Connects PCs in the computer labs.
+    \item \textbf{VLAN 20 - Classrooms}: Connects PCs in the classrooms.
+    \item \textbf{VLAN 30 - Administration}: Connects PCs in the administrative areas.
+    \item \textbf{VLAN 40 - Security}: Connects security devices such as cameras and access control systems.
+    \item \textbf{VLAN 50 - Guest Wi-Fi}: Provides internet access for guest devices.
+\end{itemize}
+
+\subsection{Switch Configuration}
+
+VLANs were created and assigned to switch ports to segment network traffic. The switch ports were configured to belong to their respective VLANs based on the function of each area.
+
+\subsection{Router Configuration}
+
+The router was configured to handle inter-VLAN routing. This was achieved by creating subinterfaces for each VLAN, assigning corresponding IP addresses, and setting up the DHCP service to automatically assign IP addresses to connected devices. The router's configuration enables communication between different VLANs, ensuring devices in separate VLANs can communicate as needed.
+
+\subsection{Access Points Configuration}
+
+Access points were added to provide wireless connectivity. These access points are configured to operate on VLAN 50, designated for guest Wi-Fi.
+
+\subsection{Connection and Verification}
+
+PCs and devices were connected to the switch ports corresponding to their VLANs. Wi-Fi devices were configured to connect through the access points. Connectivity was verified by ping tests between devices in different VLANs to ensure inter-VLAN routing is functioning correctly.
+\newpage
+
+\subsection{Simulation}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1\textwidth]{topology.png}
+    \caption{Network Topology in Packet Tracer}
+    \label{fig:network_topology}
+    \bigskip
+    \centering
+    \vspace*{\fill}
+    \vspace*{\fill}
+    You can download the network topology by visiting this link: \href{https://github.com/Fozzy3/Computer_Networks}{https://github.com/Fozzy3/Computer_Networks}
+\end{figure}
+
+
+\newpage
+\newpage
+\section{Schedule}
+
+\subsection{Step 1: Gather Information}
+
+\textbf{Activities (4 activities, 4 weeks):}
+
+\begin{itemize}
+    \item \textbf{Project Requirements Review:}
+        \begin{itemize}
+            \item Collect architectural plans and space distribution details of the new building.
+            \item Identify the number and types of rooms: 23 specialized laboratories, 11 software rooms, 3 doctoral rooms, 2 doctoral laboratories, study and consultation rooms, multipurpose rooms, astronomical observatory, wellness areas, relaxation and socializing rooms, walkable terrace, and parking lots.
+            \item Determine the number of students and staff (approximately 8,400 students).
+        \end{itemize}
+    \item \textbf{Assessment of Existing Infrastructure:}
+        \begin{itemize}
+            \item Analyze the current network setup of the university to identify integration points.
+            \item Evaluate existing network equipment and their compatibility with the new design.
+        \end{itemize}
+    \item \textbf{Consultation with Experts and Stakeholders:}
+        \begin{itemize}
+            \item Conduct meetings with network administrators, IT staff, faculty, and other relevant stakeholders to gather their requirements.
+            \item Document specific needs for different areas, such as high bandwidth and low latency for specialized laboratories.
+        \end{itemize}
+    \item \textbf{Review of Current Technologies and Standards:}
+        \begin{itemize}
+            \item Research up-to-date networking technologies like Wi-Fi 6, PoE switches, and advanced routers.
+            \item Assess current security standards and best practices for educational institutions.
+        \end{itemize}
+\end{itemize}
+
+\subsection{Step 2: Define/Refine Requirements}
+
+\textbf{Activities (4 activities, 4 weeks):}
+
+\begin{itemize}
+    \item \textbf{Define Technical Requirements:}
+        \begin{itemize}
+            \item Specify performance requirements such as high bandwidth and low latency connections.
+            \item Detail security needs including isolated networks for sensitive data and critical operations.
+        \end{itemize}
+    \item \textbf{User and Service Requirements:}
+        \begin{itemize}
+            \item Document the specific needs for different user groups and areas (e.g., specialized software rooms, doctoral laboratories).
+            \item Define services needed, such as reliable Wi-Fi coverage in wellness areas and outdoor spaces.
+        \end{itemize}
+    \item \textbf{Develop a Subnet and VLAN Plan:}
+        \begin{itemize}
+            \item Design subnetting for different functional areas:
+                \begin{itemize}
+                    \item 10.0.1.0/24 for Laboratories
+                    \item 10.0.2.0/24 for Classrooms
+                    \item 10.0.3.0/24 for Administration
+                    \item 10.0.4.0/24 for Security Services
+                    \item 10.0.5.0/24 for Guest Wi-Fi
+                \end{itemize}
+            \item Implement VLANs to segment network traffic.
+        \end{itemize}
+    \item \textbf{Establish Security Policies and Procedures:}
+        \begin{itemize}
+            \item Define network security policies, including access controls and usage policies.
+            \item Establish procedures for managing and responding to security incidents.
+        \end{itemize}
+\end{itemize}
+
+\subsection{Step 3: Create Design Proposal}
+
+\textbf{Activities (4 activities, 4 weeks):}
+
+\begin{itemize}
+    \item \textbf{Develop Network Topology:}
+        \begin{itemize}
+            \item Create detailed diagrams showing the layout of switches, routers, Wi-Fi access points, and other network devices.
+            \item Define both physical and logical connections.
+        \end{itemize}
+    \item \textbf{Selection of Equipment and Technologies:}
+        \begin{itemize}
+            \item Select network equipment based on requirements:
+                \begin{itemize}
+                    \item Category 6A cabling
+                    \item Unmanaged 48-port Gigabit PoE switches
+                    \item Cisco ISR 4000 series routers
+                    \item Aruba Networks AP 515 access points
+                \end{itemize}
+            \item Ensure equipment meets performance and compatibility needs.
+        \end{itemize}
+    \item \textbf{Design Cable Layout:}
+        \begin{itemize}
+            \item Plan the distribution of Category 6A cabling.
+            \item Calculate the total cable length required (estimated at 16,200 meters).
+        \end{itemize}
+    \item \textbf{Document the Proposal:}
+        \begin{itemize}
+            \item Create a comprehensive document including network diagrams, equipment specifications, and an implementation plan.
+            \item Include security policies and maintenance procedures.
+        \end{itemize}
+\end{itemize}
+
+\subsection{Step 4: Validate the Design}
+
+\textbf{Activities (4 activities, 4 weeks):}
+
+\begin{itemize}
+    \item \textbf{Review and Validate the Design:}
+        \begin{itemize}
+            \item Present the design to stakeholders for feedback and approval.
+            \item Make necessary adjustments based on feedback.
+        \end{itemize}
+    \item \textbf{Testing and Simulations:}
+        \begin{itemize}
+            \item Use Cisco Packet Tracer or similar tools to simulate the network.
+            \item Conduct performance tests and troubleshoot potential issues.
+        \end{itemize}
+    \item \textbf{Implementation Planning:}
+        \begin{itemize}
+            \item Develop a detailed implementation plan including a timeline, resources, and task responsibilities.
+            \item Plan for phased implementation to minimize disruption.
+        \end{itemize}
+    \item \textbf{Prepare Final Documentation:}
+        \begin{itemize}
+            \item Finalize all documentation for implementation and future maintenance.
+            \item Include configuration guides, security protocols, and user manuals.
+        \end{itemize}
+\end{itemize}
+
+\section{Project Schedule}
+
+\newpage
+\begin{landscape}
+    \includegraphics[width=1.4\textwidth]{Figure_1.png} 
+\end{landscape}
+
+\newpage
+
+\section*{Referencias}
+
+
+\begin{itemize}
+H    \item TrueCABLE. (n.d.). Cable de red Ethernet Cat6A Riser CMR de 1000 pies, sólido, 23AWG, 10Gbps, 550 MHz, UTP, 8 conductores, Pure Bare Copper Wire, trenzado, PoE/UL certificado, en caja, azul [Descripción del producto]. Amazon. Recuperado el 20 de abril de 2024, de \burl{https://www.amazon.com/TrueCABLE-s\%C3\%B3lido-Certificaci\%C3\%B3n-trenzado-Ethernet/dp/B073WMTQ3R/ref=mp_s_a_1_1_sspa?crid=1VN4N3S4MVJQR&dib=eyJ2IjoiMSJ9.qT-jO5bpWWkf_VEtsbEA3nbKpldPsaE5dSrrgefKJ2YBELrhMC8bjrdcg01ut14nJ4n-OSKFwmsDN4fZA9HnzCpEmCYrqXW9JNrPONMIVEepj-ROsee46kXQEEpfUwG_dere9THMP-FjYJ_0NFoxbVVFLmT3gmSQcIkIegXj-IsdM6MEea2bwocVg0GcrpodXGc2QMf9M5KvSnUS5FLWKA.AKh5qGTCTjpg71qTE4N_2HJQbokB1wWGm1X-3Ej87YQ&dib_tag=se&keywords=cat+6a+cable+1000ft&qid=1713621263&sprefix=cat+6a+cable\%2Caps\%2C175&sr=8-1-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9waG9uZV9zZWFyY2hfYXRm&psc=1}
+    \item Amazon. (n.d.). [Switch PoE Gigabit de 48 puertos no administrado con 48 puertos IEEE802.3af]. Recuperado el 20 de abril de 2024, de \burl{https://www.amazon.com/dp/B0B91QWFXM/ref=sspa_dk_detail_0?pd_rd_i=B0B91QWFXM&s=pc&sp_csd=d2lkZ2V0TmFtZT1zcF9kZXRhaWxfdGhlbWF0aWM}
+    \item IT Price. (n.d.). Cisco ISR 4000 Router. Recuperado el 20 de abril de 2024, de \burl{https://itprice.com/es/cisco-gpl/isr\%204000\%20router}
+    \item Amazon. (n.d.). Aruba AP-515 Dual Radio [Descripción del producto]. Amazon. Recuperado el 20 de abril de 2024, de \burl{https://www.amazon.com/-/es/Q9H63A-Aruba-AP-515-Dual-Radio/dp/B07JQ9Y7DD}
+    \item MyM Systech. (n.d.). Gabiente Tripp Lite SR42UB 42U Estandar SmarTrack de 42U. Recuperado el 20 de abril de 2024, de \burl{https://mymsystech.com.co/racks/4133-gabiente-tripp-lite-sr42ub-42u-estandar-smartrack-de-42u.html}
+\end{itemize}
+
+
+\end{document}
